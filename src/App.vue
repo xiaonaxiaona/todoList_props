@@ -44,7 +44,7 @@ export default {
     },
     //切换选中的方法---如都选中item   下面的footer也会被选中
     toggleTodo(todo){
-      todo.isShow = !todo.isShow
+      todo.isShow = ! todo.isShow
     },
     //footer选中，item就要选中,传进来的值是布尔的值
     checkAll(isCheck){

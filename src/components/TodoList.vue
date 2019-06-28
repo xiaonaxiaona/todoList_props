@@ -1,7 +1,8 @@
 <template>
    <ul class="todo-main">
-        <TodoItem v-for="(todo,index) in todos" :key="todo.id" :index="index" :todo="todo" 
-        :deleteTodo="deleteTodo" :toggleTodo="toggleTodo"/>     
+        <!-- <TodoItem v-for="(todo,index) in todos" :key="todo.id" :index="index" :todo="todo" 
+        :deleteTodo="deleteTodo" :toggleTodo="toggleTodo"/>   props的形式  -->
+        <TodoItem v-for="(todo,index) in todos" :key="todo.id" :index="index" :todo="todo" />     
             
    </ul>
 </template>
@@ -9,7 +10,7 @@
 <script>
   import TodoItem from './TodoItem'
   export default {
-    props:["todos", "deleteTodo", "toggleTodo"],
+    props:["todos"],
     components:{
       TodoItem
     },

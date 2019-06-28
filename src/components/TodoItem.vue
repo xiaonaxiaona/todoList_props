@@ -10,17 +10,21 @@
 </template>
 
 <script>
+//引入pubsub 
+import PubSub from 'pubsub-js'
+
   export default {
     props:{
       todo:Object,
       index:Number,
-      deleteTodo:Function,
-      toggleTodo:Function
+      // deleteTodo:Function,    换成pubsub的形式
+      //toggleTodo:Function   换成事件总线
     },
     methods:{
       del(){
         if(confirm('你确定要删除吗？')){
-          this.deleteTodo(this.index)
+          //this.deleteTodo(this.index)
+          PubSub.publish('deleteTodo',this.index)
         }
       },
       handleMouse(isEnter){
@@ -48,7 +52,10 @@
           return this.todo.isShow
         },
         set(todo){
-          this.toggleTodo(this.todo)   //设置todo都被选中，传递给APP，然后footer会被选中
+
+          //this.toggleTodo(this.todo)   //设置todo都被选中，传递给APP，然后footer会被选中
+
+          this.$bus.$emit('toggleTodo',this.todo)   //消息事件总线
         }
       }
     }

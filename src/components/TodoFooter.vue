@@ -1,36 +1,18 @@
 <template>
   <div class="todo-footer">
-    <label>
-      <!-- isCheck的值就是布尔值，勾选框是否被选中？  ---选中是true，没有选中是false -->
-      <input type="checkbox" v-model="isCheck"/>
-    </label>
-    <span>
-      <span>已完成{{count}}</span> / 全部{{todos.length}}
-    </span>
-    <button class="btn btn-danger" v-show="count>0">清除已完成任务</button>
+    <slot name="left"></slot>
+    <slot name="center"></slot>
+    <slot name="right"></slot>
   </div>
 </template>
 
 <script>
   export default {
-    props:{
-      todos:Array,
-      checkAll:Function
-    },
-    computed:{
-      count(){
-        return this.todos.reduce((pre,todo) => pre + (todo.isShow===true ? 1:0 ),0)
-      },
-      //设置全选的属性----有读有写操作---item都勾上，它就要勾上；它勾上，所有的item就要勾上
-      isCheck: {
-        get(){
-          return this.todos.length === this.count && this.count > 0
-        },
-        set(val){
-          this.checkAll(val)
-        }
-      }
-    }
+    // props:{
+    //   todos:Array,
+    //   checkAll:Function
+    // },
+   
   }
 </script>
 

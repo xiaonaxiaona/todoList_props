@@ -6,12 +6,12 @@
 
 <script>
   export default {
-    props:{
-      addTodo:{
-        type: Function,
-        required: true
-      }
-    },
+    // props:{        //----props的形式，现在采用的是自定义的形式 
+    //   addTodo:{
+    //     type: Function,
+    //     required: true
+    //   }
+    // },
     data(){
       return{
         value: '',
@@ -32,7 +32,8 @@
           isShow:false
         }
         //3. 调用传来的函数
-        this.addTodo(obj)
+        //this.addTodo(obj)    -----props的形式
+        this.$emit('addTodo',obj)   //---自定义的事件传送数据
 
         //清空输入框
         this.value = ""
